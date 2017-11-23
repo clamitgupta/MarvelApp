@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comics | Marvel</title>
+</head>
+
+<body class="desc-block">
+  <section class="Marvel-bg-item">
+    <div class="detail-item-bg">
+      <img src="{{data.images[0] && data.images[0].path ?  data.images[0].path : null}}.{{data.images[0] && data.images[0].path ? data.images[0].extension : null }}">
+    </div>
+  </section>
+  <section class="Featured-detail-outer p-t-40 ">
+    <div class="wrapper">
+      <div class="featured-item-info">
+        <h1 class="show-mob heading-block-game">Silver Sable and the Wild Pack (2017) #36</h1>
+        <a class="featured-item-image">
+          <div class="featured-image-border"></div>
+          <img class="item-img" alt="Silver Sable and the Wild Pack (2017) #36" title="Silver Sable and the Wild Pack (2017) #36" src="{{data.images[0] && data.images[0].path ?  data.images[0].path : null}}.{{data.images[0] && data.images[0].path ? data.images[0].extension : null }}">
+        </a>
+        <div class="featured-item-content">
+          <h1 class="hide-mob">{{data.title}}</h1>
+          <ul>
+            <li><strong>Published:</strong>
+              <div *ngFor="let comicDate of data.dates">
+                <span *ngIf="comicDate.type === 'onsaleDate'">
+                  {{ comicDate.date | date : "longDate"}}
+                </span>
+              </div>
+            </li>
+            <li> <strong>Rating:</strong> Rated T+</li>
+            <li> <strong>Writer:</strong> <a href="#">Christa  Faust</a></li>
+            <li> <strong>Penciler:</strong> <a href="#">Jose  Soares</a></li>
+            <li> <strong>Cover Artist:</strong> <a href="#">Mahmud  Asrar</a> </li>
+          </ul>
+          <div class="featured-item-desc">
+           {{data.description | slice : 0 : 20}}<a class="lnk-more">more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="purchasePathWidget">
+    <div class="wrapper">
+      <div class="purchase-paths">
+        <div class="purchase-right">
+          <h4 class="mediaOvLg-block">Digital Issue
+            <small>Read online or on your iPhone, iPad or Android Device 
+							<span class="pointerTrigger">?</span>
+						</small>
+          </h4>
+          <div class="shifted-group">
+            <div class="shifted-group-content ">
+              <div class="shifted-container">
+                <div class="shifted-content">
+                  <div class="_mediaOvLg-block purchase-price" *ngIf="data.prices && data.prices.length">
+                   $3.99
+                  </div>
+                   <div class="_mediaOvLg-block purchase-price" *ngIf="!data.prices">$ 0.00</div>
+                  <div class="shifted-content-footer"></div>
+                  <a href="#" class="purchase-cta btn-red"><span>Buy digital issue</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="purchase-left">
+          <h4 class="mediaOvLg-block">Print Issue <small>In Stores Now</small></h4>
+          <div class="shifted-container">
+            <div class="shifted-content">
+              <form class="purchase-actionItems">
+                <div class="btn btn-white btn-black-border">
+                  <span class="shiftedTxtBox">
+									<input id="input-zipcode" value="" placeholder="Enter Zip Code" name="zipcode" type="text">
+								</span>
+                </div>
+                <button class="btn btn-black btn-black-border"><span>Find a Store</span>
+								</button>
+              </form>
+              <div class="shifted-content-footer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="extended-details-section">
+    <div class="wrapper">
+      <div class="pad">More Details</div>
+      <div class="More-info-outer">
+
+        <div class="detail-extended">
+          <div class="detail-extended-item">
+            <h6>Extended credits and info</h6>
+            <ul class="block2">
+              <li><strong>Imprint:</strong> Marvel Universe</li>
+              <li><strong>Rating:</strong> Rated T+</li>
+              <li><strong>Format:</strong> Comic</li>
+              <li><strong>Price:</strong> $3.99</li>
+              <li><strong>UPC:</strong> 75960608835500111</li>
+              <li><strong>FOC Date:</strong> Oct 30, 2017</li>
+            </ul>
+          </div>
+          <div class="detail-extended-item">
+            <h6>Cover Information</h6>
+            <ul class="block2">
+              <li><strong>Penciler (cover):</strong><br> <a href="#">Mahmud Asrar</a></li>
+              <li><strong>Editor:</strong><br> <a href="#">Edward Devin Lewis</a></li>
+              <li><strong>Inker (cover):</strong><br> <a href="#">Mahmud Asrar</a></li>
+              <li><strong>Colorist (cover):</strong><br> <a href="#">Marte Gracia</a></li>
+            </ul>
+          </div>
+          <div class="detail-extended-item">
+            <h6>Stories</h6>
+            <ul class="block2">
+              <li><strong>Writer:</strong><br> <a href="#">Christa Faust</a></li>
+              <li><strong>Inker:</strong><br> <a href="#">PAULO SIQUEIRA</a>, <a href="#">Terry Pallot</a>, <a href="#">Cam Smith</a></li>
+              <li><strong>Colorist:</strong><br> <a href="#">Rachelle Rosenberg</a></li>
+              <li><strong>Letterer:</strong><br> <a href="#">Vc Joe Sabino</a></li>
+              <li><strong>Penciler:</strong><br> <a href="#">PAULO SIQUEIRA</a>, <a href="#">Jose Soares</a></li>
+              <li><strong>Editor:</strong><br> <a href="#">Edward Devin Lewis</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

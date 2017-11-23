@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comics | Marvel</title>
+</head>
+
+<body>
+  <section class="Featured-detail-outer" infiniteScroll [infiniteScrollDistance]=2 [infiniteScrollThrottle]=400 [infiniteScrollDisabled]="allowScroll"
+    (scrolled)="onScroll()">
+    <div class="wrapper">
+      <h2 class="module-header">DEADPOOL COMICS </h2>
+      <ul class="Listing-block">
+        <li *ngFor="let comic of data;" (click)="goToDetail(comic.id)">
+          <a class="featured-item-image" lazy-load-images>
+            <div class="featured-image-border"></div>
+            <img class="item-img" alt="loading..." title="Silver Sable and the Wild Pack (2017) #36" attr.data-src="{{comic.images[0] && comic.images[0].path ?  comic.images[0].path : null}}.{{comic.images[0] && comic.images[0].path ? comic.images[0].extension : null }}">
+          </a>
+          <div class="meta-creators">
+            <h5><a class="meta-title">{{comic.title}}</a></h5>
+            <div *ngFor="let comicDate of comic.dates">
+              <span *ngIf="comicDate.type === 'onsaleDate'">
+                <h2>{{ comicDate.date | date : "longDate"}}</h2>
+              </span>
+            </div>
+            <p>{{comic.description | slice:0 : 20}}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</body>
+
+</html>
