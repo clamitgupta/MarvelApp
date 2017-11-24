@@ -33,9 +33,9 @@
               </div>
             </li>
             <li> <strong>Rating:</strong> Rated T+</li>
-            <li> <strong>Writer:</strong> <a>{{data.writer ? data.writer : 'N/A'}}</a></li>
-            <li> <strong>Penciler:</strong> <a>{{data.penciler ? data.penciler : 'N/A'}}</a></li>
-            <li> <strong>Cover Artist:</strong> <a>{{data.coverPenciler ? data.coverPenciler : 'N/A'}}</a> </li>
+            <li> <strong>Writer:</strong> {{data.writer ? data.writer : 'N/A'}}</li>
+            <li> <strong>Penciler:</strong> {{data.penciler ? data.penciler : 'N/A'}}</li>
+            <li> <strong>Cover Artist:</strong> {{data.painter ? data.painter :(data.coverColorist ? data.coverColorist : 'N/A')}} </li>
           </ul>
           <div class="featured-item-desc" *ngIf="showmore">
             {{data.description}}
@@ -65,26 +65,9 @@
                     $ {{data.price ? data.price : 0.00}}
                   </div>
                   <div class="shifted-content-footer"></div>
-                  <a class="purchase-cta btn-red"><span>Buy digital issue</span></a>
+                  <a class="purchase-cta btn-red"><span>Buy now</span></a>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="purchase-left">
-          <h4 class="mediaOvLg-block">Print Issue <small>In Stores Now</small></h4>
-          <div class="shifted-container">
-            <div class="shifted-content">
-              <form class="purchase-actionItems">
-                <div class="btn btn-white btn-black-border">
-                  <span class="shiftedTxtBox">
-									<input id="input-zipcode" value="" placeholder="Enter Zip Code" name="zipcode" type="text">
-								</span>
-                </div>
-                <button class="btn btn-black btn-black-border"><span>Find a Store</span>
-								</button>
-              </form>
-              <div class="shifted-content-footer"></div>
             </div>
           </div>
         </div>
@@ -112,11 +95,12 @@
             <h6>
               Cover Information</h6>
             <ul class="block2">
+              <li *ngIf="data.painter"><strong>Painter (cover):</strong><br>{{data.painter}}</li>
               <li *ngIf="data.coverPenciler"><strong>Penciler (cover):</strong><br>{{data.coverPenciler}}</li>
               <li *ngIf="data.coverEditor"><strong>Editor:</strong><br>{{data.coverEditor}}</li>
               <li *ngIf="data.coverInker"><strong>Inker (cover):</strong><br>{{data.coverInker}}</li>
               <li *ngIf="data.coverColorist"><strong>Colorist (cover):</strong><br>{{data.coverColorist}}</li>
-              <li *ngIf="!data.coverPenciler && !data.coverEditor && !data.coverInker && !data.coverColorist">N/A</li>
+              <li *ngIf="!data.coverPenciler && !data.coverEditor && !data.coverInker && !data.coverColorist && !data.painter">N/A</li>
             </ul>
           </div>
           <div class="detail-extended-item">
@@ -129,6 +113,15 @@
               <li *ngIf="data.penciler"><strong>Penciler:</strong><br>{{data.penciler}}</li>
               <li *ngIf="data.editor"><strong>Editor:</strong><br>{{data.editor}}</li>
               <li *ngIf="!data.writer && !data.inker && !data.colorist && !data.letterer && !data.penciler && !data.editor && !data.writer">N/A</li>
+            </ul>
+          </div>
+           <div class="detail-extended-item">
+            <h6>
+              Characters</h6>
+            <ul class="block2" >
+              <span *ngFor="let character of data.characters.items">
+              <li>{{character.name}}</li>              
+              </span>
             </ul>
           </div>
         </div>

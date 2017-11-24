@@ -48,6 +48,8 @@ export class ComicDetailComponent implements OnInit {
               this.data.coverInker = this.data.coverInker ? this.data.coverInker + "," + creator.name : creator.name;
             } else if (creator.role === "penciller (cover)") {
               this.data.coverPenciler = this.data.coverPenciler ? this.data.coverPenciler + "," + creator.name : creator.name;
+            } else if (creator.role === "painter (cover)") {
+              this.data.painter = this.data.painter ? this.data.painter + ", " + creator.name : creator.name;
             } else if (creator.role === "writer") {
               this.data.writer = this.data.writer ? this.data.writer + "," + creator.name : creator.name;
             } else if (creator.role === "colorist") {

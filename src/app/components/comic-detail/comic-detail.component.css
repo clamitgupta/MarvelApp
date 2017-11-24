@@ -4,6 +4,9 @@ color: #fff;
 .purchase-paths {
 	margin-bottom: -63px;
 }
+.featured-item-content li{
+  margin-bottom: 13px;
+}
  .purchase-right h4 {
 	margin-left: 23px;
 }
@@ -20,6 +23,10 @@ float: right;
 }
 .p-t-40{
 	padding-top: 40px;
+}
+.purchase-paths{
+  width : 100%;
+  display: inline-block;
 }
 .desc-block {
 	background-image: url("../../../assets/img/dotted-bg.png");
@@ -219,7 +226,7 @@ font-size: 15px;
 	background-color: #f0141e;
 }
  .purchase-right {
-	float: right;
+	float: left;
 	width: 68.25%;
 	margin-right: -20px;
 }
@@ -459,5 +466,9 @@ max-width: 100%;
 }
 .pad {
 	margin-top: 32px;margin-bottom: 8px;
+}
+
+.detail-extended-item ul{
+  min-height: 0px;
 }
 }
