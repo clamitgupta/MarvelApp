@@ -28,17 +28,20 @@
             <li><strong>Published:</strong>
               <div *ngFor="let comicDate of data.dates">
                 <span *ngIf="comicDate.type === 'onsaleDate'">
-                  {{ comicDate.date | date : "longDate"}}
-                </span>
+                   {{ comicDate.date | date : 'longDate'}}
+              </span>
               </div>
             </li>
             <li> <strong>Rating:</strong> Rated T+</li>
-            <li> <strong>Writer:</strong> <a href="#">Christa  Faust</a></li>
-            <li> <strong>Penciler:</strong> <a href="#">Jose  Soares</a></li>
-            <li> <strong>Cover Artist:</strong> <a href="#">Mahmud  Asrar</a> </li>
+            <li> <strong>Writer:</strong> <a href="#">{{data.writer}}</a></li>
+            <li> <strong>Penciler:</strong> <a href="#">{{data.penciler}}</a></li>
+            <li> <strong>Cover Artist:</strong> <a href="#">{{data.coverPenciler}}</a> </li>
           </ul>
-          <div class="featured-item-desc">
-           {{data.description | slice : 0 : 20}}<a class="lnk-more">more</a>
+          <div class="featured-item-desc" *ngIf="showmore">
+            {{data.description}}
+          </div>
+          <div  class="featured-item-desc" *ngIf="!showmore">
+            {{ data.description | slice : 0 : 20 }}...<span class="lnk-more" (click)="showMore()"> more</span>
           </div>
         </div>
       </div>
@@ -58,10 +61,9 @@
             <div class="shifted-group-content ">
               <div class="shifted-container">
                 <div class="shifted-content">
-                  <div class="_mediaOvLg-block purchase-price" *ngIf="data.prices && data.prices.length">
-                   $3.99
+                  <div class="_mediaOvLg-block purchase-price">
+                    $ {{data.price ? data.price : 0.00}}
                   </div>
-                   <div class="_mediaOvLg-block purchase-price" *ngIf="!data.prices">$ 0.00</div>
                   <div class="shifted-content-footer"></div>
                   <a href="#" class="purchase-cta btn-red"><span>Buy digital issue</span></a>
                 </div>
@@ -100,30 +102,30 @@
             <ul class="block2">
               <li><strong>Imprint:</strong> Marvel Universe</li>
               <li><strong>Rating:</strong> Rated T+</li>
-              <li><strong>Format:</strong> Comic</li>
-              <li><strong>Price:</strong> $3.99</li>
-              <li><strong>UPC:</strong> 75960608835500111</li>
-              <li><strong>FOC Date:</strong> Oct 30, 2017</li>
+              <li><strong>Format:</strong> {{data.format}}</li>
+              <li><strong>Price:</strong>${{data.price ? data.price : 0.00}} </li>
+              <li><strong>UPC:</strong> {{data.upc}}</li>
+              <li><strong>FOC Date:</strong>{{data.focDate | date : "longDate"}}</li>
             </ul>
           </div>
           <div class="detail-extended-item">
             <h6>Cover Information</h6>
             <ul class="block2">
-              <li><strong>Penciler (cover):</strong><br> <a href="#">Mahmud Asrar</a></li>
-              <li><strong>Editor:</strong><br> <a href="#">Edward Devin Lewis</a></li>
-              <li><strong>Inker (cover):</strong><br> <a href="#">Mahmud Asrar</a></li>
-              <li><strong>Colorist (cover):</strong><br> <a href="#">Marte Gracia</a></li>
+              <li *ngIf="data.coverPenciler"><strong>Penciler (cover):</strong><br>{{data.coverPenciler}}</li>
+              <li *ngIf="data.coverEditor" ><strong>Editor:</strong><br>{{data.coverEditor}}</li>
+              <li *ngIf="data.coverInker"><strong>Inker (cover):</strong><br>{{data.coverInker}}</li>
+              <li *ngIf="data.coverColorist"><strong>Colorist (cover):</strong><br>{{data.coverColorist}}</li>
             </ul>
           </div>
           <div class="detail-extended-item">
             <h6>Stories</h6>
             <ul class="block2">
-              <li><strong>Writer:</strong><br> <a href="#">Christa Faust</a></li>
-              <li><strong>Inker:</strong><br> <a href="#">PAULO SIQUEIRA</a>, <a href="#">Terry Pallot</a>, <a href="#">Cam Smith</a></li>
-              <li><strong>Colorist:</strong><br> <a href="#">Rachelle Rosenberg</a></li>
-              <li><strong>Letterer:</strong><br> <a href="#">Vc Joe Sabino</a></li>
-              <li><strong>Penciler:</strong><br> <a href="#">PAULO SIQUEIRA</a>, <a href="#">Jose Soares</a></li>
-              <li><strong>Editor:</strong><br> <a href="#">Edward Devin Lewis</a></li>
+              <li *ngIf="data.writer"><strong>Writer:</strong><br>{{data.writer}}</li>
+              <li *ngIf="data.inker"><strong>Inker:</strong><br>{{data.inker}}</li>
+              <li *ngIf="data.colorist"><strong>Colorist:</strong><br>{{data.colorist}}</li>
+              <li *ngIf="data.letterer"><strong>Letterer:</strong><br>{{data.letterer}}</li>
+              <li *ngIf="data.penciler"><strong>Penciler:</strong><br>{{data.penciler}}</li>
+              <li *ngIf="data.editor"><strong>Editor:</strong><br>{{data.editor}}</li>
             </ul>
           </div>
         </div>
