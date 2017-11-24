@@ -335,15 +335,14 @@ padding:0px;
 .btn-white-border::before, .btn-black-border::before {
 	left: 0;
 }
-
- .btn-black:hover span,  .btn-black:hover::before,  .btn-black:hover::after {
+.btn-black:hover span,  .btn-black:hover::before,  .btn-black:hover::after {
 	background-color: #343434;
 }
 .extended-details-section {
 	background: #212121;
 	position: relative;
 	z-index: 1;
-	padding-top: 70px;
+	padding-top: 35px;
 }
 .pad {
 	font-size: 24px;
