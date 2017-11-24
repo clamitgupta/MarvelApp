@@ -33,14 +33,14 @@
               </div>
             </li>
             <li> <strong>Rating:</strong> Rated T+</li>
-            <li> <strong>Writer:</strong> <a href="#">{{data.writer}}</a></li>
-            <li> <strong>Penciler:</strong> <a href="#">{{data.penciler}}</a></li>
-            <li> <strong>Cover Artist:</strong> <a href="#">{{data.coverPenciler}}</a> </li>
+            <li> <strong>Writer:</strong> <a>{{data.writer ? data.writer : 'N/A'}}</a></li>
+            <li> <strong>Penciler:</strong> <a>{{data.penciler ? data.penciler : 'N/A'}}</a></li>
+            <li> <strong>Cover Artist:</strong> <a>{{data.coverPenciler ? data.coverPenciler : 'N/A'}}</a> </li>
           </ul>
           <div class="featured-item-desc" *ngIf="showmore">
             {{data.description}}
           </div>
-          <div  class="featured-item-desc" *ngIf="!showmore">
+          <div class="featured-item-desc" *ngIf="!showmore">
             {{ data.description | slice : 0 : 20 }}...<span class="lnk-more" (click)="showMore()"> more</span>
           </div>
         </div>
@@ -65,7 +65,7 @@
                     $ {{data.price ? data.price : 0.00}}
                   </div>
                   <div class="shifted-content-footer"></div>
-                  <a href="#" class="purchase-cta btn-red"><span>Buy digital issue</span></a>
+                  <a class="purchase-cta btn-red"><span>Buy digital issue</span></a>
                 </div>
               </div>
             </div>
@@ -102,19 +102,21 @@
             <ul class="block2">
               <li><strong>Imprint:</strong> Marvel Universe</li>
               <li><strong>Rating:</strong> Rated T+</li>
-              <li><strong>Format:</strong> {{data.format}}</li>
+              <li><strong>Format:</strong> {{data.format ? data.format : 'N/A'}}</li>
               <li><strong>Price:</strong>${{data.price ? data.price : 0.00}} </li>
-              <li><strong>UPC:</strong> {{data.upc}}</li>
+              <li><strong>UPC:</strong> {{data.upc ? data.upc : 'N/A'}}</li>
               <li><strong>FOC Date:</strong>{{data.focDate | date : "longDate"}}</li>
             </ul>
           </div>
           <div class="detail-extended-item">
-            <h6>Cover Information</h6>
+            <h6>
+              Cover Information</h6>
             <ul class="block2">
               <li *ngIf="data.coverPenciler"><strong>Penciler (cover):</strong><br>{{data.coverPenciler}}</li>
-              <li *ngIf="data.coverEditor" ><strong>Editor:</strong><br>{{data.coverEditor}}</li>
+              <li *ngIf="data.coverEditor"><strong>Editor:</strong><br>{{data.coverEditor}}</li>
               <li *ngIf="data.coverInker"><strong>Inker (cover):</strong><br>{{data.coverInker}}</li>
               <li *ngIf="data.coverColorist"><strong>Colorist (cover):</strong><br>{{data.coverColorist}}</li>
+              <li *ngIf="!data.coverPenciler && !data.coverEditor && !data.coverInker && !data.coverColorist">N/A</li>
             </ul>
           </div>
           <div class="detail-extended-item">
@@ -126,6 +128,7 @@
               <li *ngIf="data.letterer"><strong>Letterer:</strong><br>{{data.letterer}}</li>
               <li *ngIf="data.penciler"><strong>Penciler:</strong><br>{{data.penciler}}</li>
               <li *ngIf="data.editor"><strong>Editor:</strong><br>{{data.editor}}</li>
+              <li *ngIf="!data.writer && !data.inker && !data.colorist && !data.letterer && !data.penciler && !data.editor && !data.writer">N/A</li>
             </ul>
           </div>
         </div>

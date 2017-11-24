@@ -43,24 +43,26 @@ export class ComicDetailComponent implements OnInit {
 
           for (var creator of resp.data.results[0].creators.items) {
             if (creator.role === "colorist (cover)") {
-              this.data.coverColorist = creator.name;
+              this.data.coverColorist = this.data.coverColorist ? this.data.coverColorist + "," + creator.name : creator.name;
             } else if (creator.role === "inker (cover)") {
-              this.data.coverInker = creator.name;
-            } else if (creator.role === "penciler (cover)") {
-              this.data.penciler = creator.name;
+              this.data.coverInker = this.data.coverInker ? this.data.coverInker + "," + creator.name : creator.name;
+            } else if (creator.role === "penciller (cover)") {
+              this.data.coverPenciler = this.data.coverPenciler ? this.data.coverPenciler + "," + creator.name : creator.name;
             } else if (creator.role === "writer") {
-              this.data.writer = creator.name;
+              this.data.writer = this.data.writer ? this.data.writer + "," + creator.name : creator.name;
             } else if (creator.role === "colorist") {
-              this.data.colorist = creator.name;
+              this.data.colorist = this.data.colorist ? this.data.colorist + "," + creator.name : creator.name;
             } else if (creator.role === "editor") {
-              this.data.editor = creator.name;
+              this.data.editor = this.data.editor ? this.data.editor + "," + creator.name : creator.name;
             } else if (creator.role === "inker") {
-              this.data.inker = creator.name;
+              this.data.inker = this.data.inker ? this.data.inker + "," + creator.name : creator.name;
+            } else if (creator.role === "penciller") {
+              this.data.penciler = this.data.penciler ? this.data.penciler + ", " + creator.name : creator.name;
             } if (creator.role === "letterer") {
-              this.data.letterer = creator.name;
+              this.data.letterer = this.data.penciler ? this.data.penciler + "," + creator.name : creator.name;
             }
-        }
-          
+          }
+
         } else {
           console.log(JSON.stringify("no reso"));
         }
@@ -70,7 +72,7 @@ export class ComicDetailComponent implements OnInit {
       })
   }
 
-  showMore(){
+  showMore() {
     this.showmore = true;
   }
 
