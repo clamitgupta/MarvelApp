@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class HomeService {
@@ -8,15 +9,14 @@ export class HomeService {
   constructor(
     private http: HttpClient
   ) {
-    this.apiKey = "baaffcab25d18e5c04d37a4a35a839fa";
+    this.apiKey = environment.apiKey;
   }
 
   getComics(data) {
     data.characters = 1009268;
     data.orderBy = "-onsaleDate";
-
     return new Promise((resolve, reject) => {
-      this.http.get('https://gateway.marvel.com:443/v1/public/comics?characters=' + data.characters + '&orderBy=' + data.orderBy + '&offset=' + data.offset + '&apikey=' + this.apiKey, { headers: { 'Content-Type': 'application/json' } }
+      this.http.get(environment.baseUrl +  'comics?characters=' + data.characters + '&orderBy=' + data.orderBy + '&offset=' + data.offset + '&apikey=' + this.apiKey, { headers: { 'Content-Type': 'application/json' } }
       ).subscribe(
         data => { resolve(data); },
         error => { reject(error); }
@@ -26,7 +26,7 @@ export class HomeService {
 
   getComicDetail(id) {
     return new Promise((resolve, reject) => {
-      this.http.get('https://gateway.marvel.com:443/v1/public/comics/' + id + '?apikey=' + this.apiKey, { headers: { 'Content-Type': 'application/json' } }
+      this.http.get(environment.baseUrl + 'comics/' + id + '?apikey=' + this.apiKey, { headers: { 'Content-Type': 'application/json' } }
       ).subscribe(
         data => { resolve(data); },
         error => { reject(error) }

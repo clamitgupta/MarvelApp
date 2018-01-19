@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiKey : "baaffcab25d18e5c04d37a4a35a839fa",
+  baseUrl : 'https://gateway.marvel.com:443/v1/public/'
 };
